@@ -1,0 +1,12 @@
+{
+    "apiKey": "",
+    "endpoint": "https://demo.reportportal.io/api/v1",
+    "project": "azhardevs_personal",
+    "launch": "azhardevs_personal",
+    "description": "Playwright Test Execution for Tesla Automation",
+    "attributes": [
+        { "key": "env", "value": "QA" },
+        { "key": "type", "value": "regression" } 
+    ],
+    "debug": false
+}

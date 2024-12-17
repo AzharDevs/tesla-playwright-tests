@@ -11,5 +11,8 @@
   "description": "",
   "dependencies": {
     "@playwright/test": "^1.49.1"
+  },
+  "devDependencies": {
+    "@reportportal/agent-js-playwright": "^5.1.11"
   }
 }
