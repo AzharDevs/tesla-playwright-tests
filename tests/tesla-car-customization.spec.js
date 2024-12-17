@@ -80,3 +80,53 @@ test('Validate https://www.tesla.com Footer', async ({ page }) => {
         expect(extractedHref).toBe(item.expectedHref);
     }
 });
+
+test("End-to-End Model 3 customization flow from homepage", async ({ page }) =>{
+    await page.goto('https://www.tesla.com', {
+        waitUntil: 'load'
+    });
+
+     //--Validate E2E Homepage to Model 3 Customization--//
+
+    //Ensures the order now button for Model 3 is visible
+    const orderNowButton = page.locator('section.tcl-button-group[data-button-count="2"] a[title="Order Now"][href="/model3/design#overview"]').nth(0);
+    await expect(orderNowButton).toBeVisible();
+    
+    //Click on the order now Model 3 Button
+    await orderNowButton.click();
+
+    //Go to Design Page
+    await expect(page).toHaveURL("https://www.tesla.com/model3/design#overview");
+
+    //--Begin Model 3 Customization--//
+
+    const customizationSteps = [
+        { labelFor: '$MT356-Long Range Rear-Wheel Drive', description: 'Model 3 Long Range Rear Wheel Drive' },
+        { labelFor: 'PAINT_$PR01', description: 'Model 3 Ultra Red Color' },
+        { labelFor: 'WHEELS_$W39S', description: 'Model 3 Nova Wheels' },
+        { labelFor: 'INTERIOR_$IPW2', description: 'Model 3 White Interior' },
+        { labelFor: '$APF2:base', description: 'Model 3 Full Self-Driving' },
+        { labelFor: 'ACCESSORY:1457768-99-G', description:'Home Charger'},
+        { labelFor: 'ACCESSORY:1974087-99-A', description: "All Weather Floor Liner"}
+    ];
+    
+    for (const step of customizationSteps){
+        const optionLabel = page.locator(`label[for="${step.labelFor}"]`);
+        console.log(step.labelFor)
+        //Validate Customizaiton Option is visible
+        await expect(optionLabel).toBeVisible();
+
+        //Click the selection option
+        await optionLabel.click();
+
+        console.log(`Selected: ${step.description}`);
+
+    }
+
+    // Validate "Order with Card" button visibility
+    const orderWithCardButton = page.locator('button[title="Order with Card"]');
+    await expect(orderWithCardButton).toBeVisible();
+
+    // Click the "Order with Card" button
+    await orderWithCardButton.click();
+})
