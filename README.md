@@ -4,8 +4,8 @@ This repository contains automated end-to-end (E2E) tests for Tesla's website, w
 
 ## Features
 
-- Navigate to Tesla's homepage.
-- Validate the Model 3 page title and URL.
+- Navigate to [Tesla's homepage](https://www.tesla.com/).
+- Validate the Homepage elements
 - Simulate and validates user interactions with car customization.
 
 ## How to Run
