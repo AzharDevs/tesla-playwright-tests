@@ -1,7 +1,14 @@
 const { defineConfig } = require('@playwright/test');
 const reportportal = require('@reportportal/agent-js-playwright');
-
+require('dotenv').config();
 const rpConfig = require('./reportportalconfig.json');
+
+if (process.env.REPORTPORTAL_API_KEY) {
+    rpConfig.apiKey = process.env.REPORTPORTAL_API_KEY;
+} else {
+    console.error('API key not found');
+    process.exit(1);
+}
 
 module.exports = defineConfig({
     projects: [

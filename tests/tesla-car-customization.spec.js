@@ -1,5 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
+test.describe.configure({ mode: 'parallel' });
+
 test('Navigate and Validate https://www.tesla.com Homepage', async ({ page }) => {
     await page.goto('https://www.tesla.com', {
         waitUntil: 'load',

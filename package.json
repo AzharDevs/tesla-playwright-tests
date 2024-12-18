@@ -10,7 +10,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@playwright/test": "^1.49.1"
+    "@playwright/test": "^1.49.1",
+    "dotenv": "^16.4.7"
   },
   "devDependencies": {
     "@reportportal/agent-js-playwright": "^5.1.11"
